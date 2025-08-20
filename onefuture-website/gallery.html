@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - One Future Foundation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --primary-green: #10b981;
+            --secondary-green: #34d399;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Bootstrap Navbar Overrides - Force visibility */
+        .navbar {
+            backdrop-filter: blur(10px) !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 1030 !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+        }
+        
+        .navbar-nav {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+        }
+        
+        .navbar-collapse {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .nav-item {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            white-space: nowrap !important;
+            margin: 0 0.25rem !important;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #374151 !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            text-decoration: none !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            font-size: 0.9rem !important;
+            padding: 0.5rem 0.75rem !important;
+        }
+        
+        .nav-link:hover {
+            color: #1e40af !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile-specific navbar fixes */
+        @media (max-width: 991.98px) {
+            .navbar {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                z-index: 1030 !important;
+            }
+            
+            .navbar-collapse {
+                background-color: rgba(255, 255, 255, 0.98) !important;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+                display: none !important;
+            }
+            
+            .navbar-collapse.show {
+                display: block !important;
+            }
+            
+            .navbar-nav {
+                padding: 1rem 0;
+            }
+            
+            .nav-item {
+                margin: 0.5rem 0 !important;
+            }
+            
+            /* Ensure dropdowns work on mobile */
+            .dropdown-menu {
+                position: static !important;
+                float: none !important;
+                width: auto !important;
+                margin-top: 0 !important;
+                background-color: transparent !important;
+                border: 0 !important;
+                box-shadow: none !important;
+                padding-left: 1rem !important;
+            }
+            
+            .dropdown-item {
+                padding: 0.5rem 1rem !important;
+                color: #374151 !important;
+            }
+            
+            /* Force Bootstrap collapse to work */
+            .navbar-collapse.collapse {
+                display: none !important;
+            }
+            
+            .navbar-collapse.collapsing {
+                height: auto !important;
+                overflow: visible !important;
+                transition: none !important;
+            }
+            
+            .navbar-collapse.collapse.show {
+                display: block !important;
+            }
+            
+            /* Ensure proper Bootstrap behavior */
+            .navbar-collapse:not(.show) {
+                display: none !important;
+            }
+            
+            .navbar-collapse.show {
+                display: block !important;
+            }
+        }
+        
+        /* Dropdown styles */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f3f4f6;
+            color: #1e40af;
+        }
+        
+        /* Small Header Styles */
+        .small-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1031;
+            font-size: 0.875rem;
+        }
+        
+        .small-header a:hover {
+            opacity: 0.8;
+        }
+        
+        .small-header .dropdown-menu {
+            font-size: 0.875rem;
+        }
+        
+        /* Adjust main content padding to account for fixed headers */
+        body {
+            padding-top: 104px;
+        }
+        
+        /* Gallery styles */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h5 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .gallery-overlay p {
+            margin: 0.25rem 0 0 0;
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        .gallery-filter {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-btn {
+            background: #f3f4f6;
+            border: 2px solid transparent;
+            color: #374151;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            margin: 0.25rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: #6b7280;
+        }
+        
+        .breadcrumb-item a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-item.active {
+            color: #6b7280;
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox.show {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 1rem 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        /* Footer Styles */
+        .social-icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            color: #3b82f6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .social-icon-circle:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .social-icon-circle svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .visitor-counter-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .counter-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .counter-label {
+            color: #93c5fd;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .counter-number {
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+        }
+        
+        .footer-map-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+        }
+        
+        .footer-map-container iframe {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-map-container iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm py-3" style="top: 0;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="./images/official logo.png" alt="One Future Foundation Logo" style="max-height: 65px; width: auto; object-fit: contain;" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#about">About Us</a></li>
+                            <li><a class="dropdown-item" href="index.html#vision">Vision & Mission</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#approach">Our Approach</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#impact">Impact Areas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#blueprint">Blueprint</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-2 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Media
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="downloads.html">Downloads</a></li>
+                            <li><a class="dropdown-item active" href="gallery.html">Gallery</a></li>
+                            <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Get Involved
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="volunteer.html">Volunteer</a></li>
+                            <li><a class="dropdown-item" href="partner.html">Partner</a></li>
+                            <li><a class="dropdown-item" href="internship.html">Internship</a></li>
+                            <li><a class="dropdown-item" href="careers.html">Job Openings</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="py-5 bg-white">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Media</a></li>
+                        <li class="breadcrumb-item active">Gallery</li>
+                    </ol>
+                </nav>
+                
+                <div class="text-center">
+                    <h1 class="display-5 fw-bold text-blue-800 mb-3">Gallery</h1>
+                    <p class="lead text-gray-600 max-w-2xl mx-auto">Explore our visual journey through impactful projects, community initiatives, and sustainable development work.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Filters -->
+        <section class="py-3">
+            <div class="container">
+                <div class="gallery-filter text-center">
+                    <h5 class="mb-3 text-blue-800">Filter by Category</h5>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <a href="#" class="filter-btn active" data-filter="all">All</a>
+                        <a href="#" class="filter-btn" data-filter="community">Community</a>
+                        <a href="#" class="filter-btn" data-filter="agriculture">Agriculture</a>
+                        <a href="#" class="filter-btn" data-filter="education">Education</a>
+                        <a href="#" class="filter-btn" data-filter="environment">Environment</a>
+                        <a href="#" class="filter-btn" data-filter="events">Events</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Grid -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4" id="galleryGrid">
+                    <!-- Content will be loaded dynamically from CMS -->
+                </div>
+                
+                <!-- Loading State -->
+                <div id="loadingState" class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3 text-muted">Loading gallery...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="text-center py-5" style="display: none;">
+                    <i class="fas fa-images fa-3x text-muted mb-3"></i>
+                    <h4 class="text-muted">No gallery items available</h4>
+                    <p class="text-muted">Check back later for new content.</p>
+                </div>
+                
+                <!-- Load More Button -->
+                <div class="text-center mt-5" id="loadMoreContainer" style="display: none;">
+                    <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill bg-blue-700 hover:bg-blue-800 border-0" id="loadMoreBtn">
+                        <i class="fas fa-plus me-2"></i>Load More
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div id="lightboxMedia"></div>
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">One Future Foundation</h3>
+                    <p class="mb-3">Empowering communities through innovative approaches in climate action, clean energy, and sustainable development for a brighter tomorrow.</p>
+                    
+                    <!-- Visitor Counter -->
+                    <div class="visitor-counter-section">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Website Visitors</h4>
+                        <div class="counter-display">
+                            <span class="counter-label">Total Visitors:</span>
+                            <span id="visitorCount" class="counter-number">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white hover:text-blue-200">Home</a></li>
+                        <li class="mb-2"><a href="index.html#about" class="text-white hover:text-blue-200">About Us</a></li>
+                        <li class="mb-2"><a href="index.html#impact" class="text-white hover:text-blue-200">Impact Areas</a></li>
+                        <li class="mb-2"><a href="index.html#blueprint" class="text-white hover:text-blue-200">Blueprint</a></li>
+                                                    <li class="mb-2"><a href="volunteer.html" class="text-white hover:text-blue-200">Get Involved</a></li>
+                        <li><a href="#footer" class="text-white hover:text-blue-200">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Google Map Location - Middle Column -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-lg font-semibold mb-3 text-white">Our Location</h4>
+                    <div class="footer-map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.820145165585!2d85.80516117341034!3d20.349047410780475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1908e025984c55%3A0xee1fcd1f11e55141!2sDLF%20Cyber%20City!5e0!3m2!1sen!2sin!4v1754549308918!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="One Future Foundation - DLF Cybercity, Bhubaneswar">
+                        </iframe>
+                    </div>
+                    <p class="text-blue-200 text-sm mt-2">DLF Cybercity, Bhubaneswar, Odisha</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-xl font-semibold mb-3">Contact Information</h3>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                <h4 class="font-semibold text-white text-sm">Address</h4>
+                                <p class="text-blue-200 text-sm">DCB 118, 1st Floor, DLF Cybercity<br>Patia, Bhubaneswar 751024<br>Odisha, India</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                <h4 class="font-semibold text-white text-sm">Email</h4>
+                                <p class="text-blue-200 text-sm">info@onefuture.in</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    <h3 class="text-lg font-semibold mb-2 text-white">Connect With Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                                    </svg>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                        </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-blue-700">
+            
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center flex-grow-1">
+                    <p class="mb-0">
+                        <i class="far fa-copyright me-1"></i> 2025. One Future Foundation. All Rights Reserved.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white hover:text-blue-200 me-3" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                        <a href="#" class="text-white hover:text-blue-200" data-bs-target="#termsModal">Terms & Conditions</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <!-- CMS Integration -->
+    <script src="js/simple-cms.js"></script>
+    
+    <script>
+        // Global variables
+        let allGalleryItems = [];
+        let filteredGalleryItems = [];
+        let displayedItems = 0;
+        const itemsPerLoad = 6;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadGallery();
+            setupEventListeners();
+            
+            // Test Bootstrap functionality
+            console.log('Testing Bootstrap functionality...');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            if (navbarToggler && navbarCollapse) {
+                console.log('Navbar elements found');
+                navbarToggler.addEventListener('click', function() {
+                    console.log('Navbar toggler clicked');
+                    navbarCollapse.classList.toggle('show');
+                });
+            } else {
+                console.log('Navbar elements not found');
+            }
+        });
+
+        // Load gallery from CMS
+        async function loadGallery() {
+            try {
+                const cms = new SimpleCMS();
+                const mediaData = await cms.getMediaItems();
+                
+                // Filter for image and video items only
+                allGalleryItems = mediaData.filter(item => 
+                    ['JPG', 'PNG', 'GIF', 'MP4', 'AVI'].includes(item.fileType)
+                );
+                
+                filteredGalleryItems = [...allGalleryItems];
+                displayedItems = 0;
+                
+                displayGalleryItems();
+                hideLoadingState();
+                
+            } catch (error) {
+                console.error('Error loading gallery:', error);
+                showEmptyState();
+            }
+        }
+
+        // Display gallery items
+        function displayGalleryItems() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            
+            if (!filteredGalleryItems.length) {
+                showEmptyState();
+                return;
+            }
+
+            const itemsToShow = filteredGalleryItems.slice(0, displayedItems + itemsPerLoad);
+            displayedItems = itemsToShow.length;
+
+            const galleryHTML = itemsToShow.map(item => {
+                const isVideo = ['MP4', 'AVI'].includes(item.fileType);
+                const mediaElement = isVideo ? 
+                    `<video src="${item.fileUrl}" alt="${item.title}" class="img-fluid" controls></video>` :
+                    `<img src="${item.thumbnail || item.fileUrl}" alt="${item.title}" class="img-fluid">`;
+                
+                return `
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="${item.category}">
+                        ${mediaElement}
+                        <div class="gallery-overlay">
+                            <h5>${item.title}</h5>
+                            <p>${item.description}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            galleryGrid.innerHTML = galleryHTML;
+            
+            // Show/hide load more button
+            const loadMoreContainer = document.getElementById('loadMoreContainer');
+            if (displayedItems < filteredGalleryItems.length) {
+                loadMoreContainer.style.display = 'block';
+            } else {
+                loadMoreContainer.style.display = 'none';
+            }
+
+            // Reinitialize lightbox functionality
+            initializeLightbox();
+        }
+
+        // Load more items
+        function loadMore() {
+            displayGalleryItems();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Load more button
+            document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
+
+            // Category filter
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    filterGallery(category);
+                });
+            });
+        }
+
+        // Filter gallery by category
+        function filterGallery(category) {
+            if (category === 'all') {
+                filteredGalleryItems = [...allGalleryItems];
+            } else {
+                filteredGalleryItems = allGalleryItems.filter(item => item.category === category);
+            }
+            
+            displayedItems = 0;
+            displayGalleryItems();
+        }
+
+        // Hide loading state
+        function hideLoadingState() {
+            document.getElementById('loadingState').style.display = 'none';
+        }
+
+        // Show empty state
+        function showEmptyState() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('galleryGrid').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'block';
+        }
+
+        // Initialize lightbox functionality
+        function initializeLightbox() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxMedia = document.getElementById('lightboxMedia');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+
+            let currentIndex = 0;
+
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openLightbox(index);
+                });
+            });
+
+            function openLightbox(index) {
+                currentIndex = index;
+                const item = filteredGalleryItems[index];
+                const isVideo = ['MP4', 'AVI'].includes(item.fileType);
+                
+                if (isVideo) {
+                    lightboxMedia.innerHTML = `<video src="${item.fileUrl}" controls autoplay></video>`;
+                } else {
+                    lightboxMedia.innerHTML = `<img src="${item.thumbnail || item.fileUrl}" alt="${item.title}">`;
+                }
+                
+                lightboxCaption.innerHTML = `<h5>${item.title}</h5><p>${item.description}</p>`;
+                lightbox.style.display = 'flex';
+            }
+
+            function closeLightbox() {
+                lightbox.style.display = 'none';
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + filteredGalleryItems.length) % filteredGalleryItems.length;
+                openLightbox(currentIndex);
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex + 1) % filteredGalleryItems.length;
+                openLightbox(currentIndex);
+            }
+
+            // Event listeners
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxPrev.addEventListener('click', showPrev);
+            lightboxNext.addEventListener('click', showNext);
+
+            // Close on background click
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') showPrev();
+                    if (e.key === 'ArrowRight') showNext();
+                }
+            });
+        }
+        
+        // Visitor Counter Function
+        function updateVisitorCount() {
+            // Get current count from localStorage
+            let count = localStorage.getItem('visitorCount');
+            
+            if (count === null) {
+                // First time visit, start from 3594
+                count = 3594;
+            } else {
+                // Increment existing count
+                count = parseInt(count) + 1;
+            }
+            
+            // Store updated count
+            localStorage.setItem('visitorCount', count);
+            
+            // Display count
+            const counterElement = document.getElementById('visitorCount');
+            if (counterElement) {
+                counterElement.textContent = count;
+            }
+        }
+        
+        // Initialize visitor counter
+        updateVisitorCount();
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "categories": [
+    {
+      "id": "sustainability",
+      "name": "Sustainability",
+      "description": "Articles about sustainable development and environmental initiatives"
+    },
+    {
+      "id": "climate-action",
+      "name": "Climate Action",
+      "description": "Content related to climate change and mitigation strategies"
+    },
+    {
+      "id": "community-development",
+      "description": "Posts about community empowerment and development projects"
+    },
+    {
+      "id": "clean-energy",
+      "name": "Clean Energy",
+      "description": "Articles about renewable energy and clean technology"
+    },
+    {
+      "id": "research",
+      "name": "Research & Policy",
+      "description": "Research findings and policy recommendations"
+    }
+  ],
+  "posts": []
+}

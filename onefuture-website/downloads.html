@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads - One Future Foundation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --primary-green: #10b981;
+            --secondary-green: #34d399;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Bootstrap Navbar Overrides - Force visibility */
+        .navbar {
+            backdrop-filter: blur(10px) !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 1030 !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+        }
+        
+        .navbar-nav {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+        }
+        
+        .navbar-collapse {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .nav-item {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            white-space: nowrap !important;
+            margin: 0 0.25rem !important;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #374151 !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            text-decoration: none !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            font-size: 0.9rem !important;
+            padding: 0.5rem 0.75rem !important;
+        }
+        
+        .nav-link:hover {
+            color: #1e40af !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile-specific navbar fixes */
+        @media (max-width: 991.98px) {
+            .navbar {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                z-index: 1030 !important;
+            }
+            
+            .navbar-collapse {
+                background-color: rgba(255, 255, 255, 0.98) !important;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+                display: none !important;
+            }
+            
+            .navbar-collapse.show {
+                display: block !important;
+            }
+            
+            .navbar-nav {
+                padding: 1rem 0;
+            }
+            
+            .nav-item {
+                margin: 0.5rem 0 !important;
+            }
+            
+            /* Ensure dropdowns work on mobile */
+            .dropdown-menu {
+                position: static !important;
+                float: none !important;
+                width: auto !important;
+                margin-top: 0 !important;
+                background-color: transparent !important;
+                border: 0 !important;
+                box-shadow: none !important;
+                padding-left: 1rem !important;
+            }
+            
+            .dropdown-item {
+                padding: 0.5rem 1rem !important;
+                color: #374151 !important;
+            }
+            
+            /* Force Bootstrap collapse to work */
+            .navbar-collapse.collapse {
+                display: none !important;
+            }
+            
+            .navbar-collapse.collapsing {
+                height: auto !important;
+                overflow: visible !important;
+                transition: none !important;
+            }
+            
+            .navbar-collapse.collapse.show {
+                display: block !important;
+            }
+            
+            /* Ensure proper Bootstrap behavior */
+            .navbar-collapse:not(.show) {
+                display: none !important;
+            }
+            
+            .navbar-collapse.show {
+                display: block !important;
+            }
+        }
+        
+        /* Dropdown styles */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f3f4f6;
+            color: #1e40af;
+        }
+        
+        /* Small Header Styles */
+        .small-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1031;
+            font-size: 0.875rem;
+        }
+        
+        .small-header a:hover {
+            opacity: 0.8;
+        }
+        
+        .small-header .dropdown-menu {
+            font-size: 0.875rem;
+        }
+        
+        /* Adjust main content padding to account for fixed headers */
+        body {
+            padding-top: 104px;
+        }
+        
+        /* Downloads table styles */
+        .downloads-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .downloads-table th {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1rem;
+        }
+        
+        .downloads-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: middle;
+        }
+        
+        .downloads-table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            color: white;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Footer Styles */
+        .social-icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            color: #3b82f6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .social-icon-circle:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .social-icon-circle svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .visitor-counter-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .counter-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .counter-label {
+            color: #93c5fd;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .counter-number {
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+        }
+        
+        .footer-map-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+        }
+        
+        .footer-map-container iframe {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-map-container iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* File Type Badges */
+        .file-type-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .badge-pdf {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .badge-doc {
+            background-color: #0d6efd;
+            color: white;
+        }
+        
+        .badge-xls {
+            background-color: #198754;
+            color: white;
+        }
+        
+        .badge-ppt {
+            background-color: #fd7e14;
+            color: white;
+        }
+        
+        .badge-other {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        /* File Icon Styling */
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        /* Table Styling */
+        .table th {
+            border-top: none;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .table td {
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        /* Card Styling */
+        .card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        
+        .card-header {
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: #6b7280;
+        }
+        
+        .breadcrumb-item a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-item.active {
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm py-3" style="top: 0;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="./images/official logo.png" alt="One Future Foundation Logo" style="max-height: 65px; width: auto; object-fit: contain;" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#about">About Us</a></li>
+                            <li><a class="dropdown-item" href="index.html#vision">Vision & Mission</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#approach">Our Approach</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#impact">Impact Areas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#blueprint">Blueprint</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-2 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Media
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="downloads.html">Downloads</a></li>
+                            <li><a class="dropdown-item" href="gallery.html">Gallery</a></li>
+                            <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Get Involved
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="volunteer.html">Volunteer</a></li>
+                            <li><a class="dropdown-item" href="partner.html">Partner</a></li>
+                            <li><a class="dropdown-item" href="internship.html">Internship</a></li>
+                            <li><a class="dropdown-item" href="careers.html">Job Openings</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="py-5 bg-white">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Media</a></li>
+                        <li class="breadcrumb-item active">Downloads</li>
+                    </ol>
+                </nav>
+                
+                <div class="text-center">
+                    <h1 class="display-5 fw-bold text-blue-800 mb-3">Downloads</h1>
+                    <p class="lead text-gray-600 max-w-2xl mx-auto">Access our latest reports, publications, and resources to learn more about our work and impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="py-5">
+            <div class="container">
+                <!-- Search and Filter -->
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-search text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" id="searchInput" placeholder="Search documents...">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-select" id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="reports">Reports</option>
+                            <option value="advertisements">Advertisements</option>
+                            <option value="journals">Journals</option>
+                            <option value="brochures">Brochures</option>
+                            <option value="flyers">Flyers</option>
+                            <option value="magazines">Magazines</option>
+                            <option value="policy-papers">Policy Papers</option>
+                            <option value="research-papers">Research Papers</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Documents Table -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-file-alt me-2"></i>
+                            Documents & Publications
+                        </h4>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Document</th>
+                                        <th>Category</th>
+                                        <th>File Type</th>
+                                        <th>Size</th>
+                                        <th>Date</th>
+                                        <th>Downloads</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="documentsTableBody">
+                                    <!-- Documents will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Loading State -->
+                        <div id="loadingState" class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-3 text-muted">Loading documents...</p>
+                        </div>
+                        
+                        <!-- Empty State -->
+                        <div id="emptyState" class="text-center py-5" style="display: none;">
+                            <i class="fas fa-file-alt fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No documents found</h5>
+                            <p class="text-muted">Try adjusting your search or filter criteria.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Documents pagination" class="mt-4">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <!-- Pagination will be generated here -->
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">One Future Foundation</h3>
+                    <p class="mb-3">Empowering communities through innovative approaches in climate action, clean energy, and sustainable development for a brighter tomorrow.</p>
+                    
+                    <!-- Visitor Counter -->
+                    <div class="visitor-counter-section">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Website Visitors</h4>
+                        <div class="counter-display">
+                            <span class="counter-label">Total Visitors:</span>
+                            <span id="visitorCount" class="counter-number">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white hover:text-blue-200">Home</a></li>
+                        <li class="mb-2"><a href="index.html#about" class="text-white hover:text-blue-200">About Us</a></li>
+                        <li class="mb-2"><a href="index.html#impact" class="text-white hover:text-blue-200">Impact Areas</a></li>
+                        <li class="mb-2"><a href="index.html#blueprint" class="text-white hover:text-blue-200">Blueprint</a></li>
+                                                    <li class="mb-2"><a href="volunteer.html" class="text-white hover:text-blue-200">Get Involved</a></li>
+                        <li><a href="#footer" class="text-white hover:text-blue-200">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Google Map Location - Middle Column -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-lg font-semibold mb-3 text-white">Our Location</h4>
+                    <div class="footer-map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.820145165585!2d85.80516117341034!3d20.349047410780475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1908e025984c55%3A0xee1fcd1f11e55141!2sDLF%20Cyber%20City!5e0!3m2!1sen!2sin!4v1754549308918!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="One Future Foundation - DLF Cybercity, Bhubaneswar">
+                        </iframe>
+                    </div>
+                    <p class="text-blue-200 text-sm mt-2">DLF Cybercity, Bhubaneswar, Odisha</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-xl font-semibold mb-3">Contact Information</h3>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                <h4 class="font-semibold text-white text-sm">Address</h4>
+                                <p class="text-blue-200 text-sm">DCB 118, 1st Floor, DLF Cybercity<br>Patia, Bhubaneswar 751024<br>Odisha, India</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                <h4 class="font-semibold text-white text-sm">Email</h4>
+                                <p class="text-blue-200 text-sm">info@onefuture.in</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    <h3 class="text-lg font-semibold mb-2 text-white">Connect With Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                                    </svg>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                        </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-blue-700">
+            
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center flex-grow-1">
+                    <p class="mb-0">
+                        <i class="far fa-copyright me-1"></i> 2025. One Future Foundation. All Rights Reserved.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white hover:text-blue-200 me-3" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                        <a href="#" class="text-white hover:text-blue-200" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <!-- CMS Integration -->
+    <script src="js/simple-cms.js"></script>
+    
+    <script>
+        // Global variables
+        let allDownloads = [];
+        let filteredDownloads = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Downloads page loaded, starting CMS integration...');
+            loadDownloads();
+            setupEventListeners();
+            
+            // Test Bootstrap functionality
+            console.log('Testing Bootstrap functionality...');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            if (navbarToggler && navbarCollapse) {
+                console.log('Navbar elements found');
+                navbarToggler.addEventListener('click', function() {
+                    console.log('Navbar toggler clicked');
+                    navbarCollapse.classList.toggle('show');
+                });
+            } else {
+                console.log('Navbar elements not found');
+            }
+        });
+
+        // Load downloads from CMS
+        async function loadDownloads() {
+            try {
+                console.log('Loading documents from CMS...');
+                const cms = new SimpleCMS();
+                const mediaData = await cms.getMediaItems();
+                
+                console.log('CMS data received:', mediaData);
+                
+                if (mediaData && mediaData.length > 0) {
+                    // Filter only documents
+                    allDownloads = mediaData.filter(item => 
+                        ['reports', 'advertisements', 'journals', 'brochures', 'flyers', 'magazines', 'policy-papers', 'research-papers'].includes(item.category)
+                    );
+                    
+                    console.log('Documents found:', allDownloads.length);
+                    
+                    if (allDownloads.length > 0) {
+                        filteredDownloads = [...allDownloads];
+                        displayDocuments(allDownloads);
+                        updatePagination();
+                        hideLoadingState();
+                    } else {
+                        showEmptyState();
+                    }
+                } else {
+                    showEmptyState();
+                }
+            } catch (error) {
+                console.error('Error loading documents:', error);
+                showEmptyState();
+            }
+        }
+
+        // Display documents
+        function displayDocuments(documents) {
+            const tbody = document.getElementById('documentsTableBody');
+            
+            if (!documents.length) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center py-4">
+                            <i class="fas fa-file-alt fa-2x text-muted mb-2"></i>
+                            <p class="text-muted mb-0">No documents available</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            const documentsHTML = documents.map(item => {
+                const fileTypeClass = getFileTypeClass(item.fileType);
+                const categoryName = getCategoryName(item.category);
+                const formattedDate = formatDate(item.date);
+                
+                return `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="file-icon me-3">
+                                    <i class="fas fa-file-pdf text-danger fs-4"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">${item.title}</h6>
+                                    <p class="text-muted mb-0 small">${item.description}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge bg-secondary">${categoryName}</span>
+                        </td>
+                        <td>
+                            <span class="file-type-badge ${fileTypeClass}">${item.fileType}</span>
+                        </td>
+                        <td>${item.fileSize}</td>
+                        <td>${formattedDate}</td>
+                        <td>
+                            <span class="text-muted">
+                                <i class="fas fa-download me-1"></i>${item.downloads || 0}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="download-btn" onclick="downloadFile('${item.fileUrl}', '${item.title}', '${item.fileType}')">
+                                <i class="fas fa-download me-1"></i>Download
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            tbody.innerHTML = documentsHTML;
+        }
+
+        // Update category filter
+        function updateCategoryFilter() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            if (categoryFilter) {
+                const selectedCategory = categoryFilter.value;
+                if (selectedCategory) {
+                    filteredDownloads = allDownloads.filter(item => item.category === selectedCategory);
+                } else {
+                    filteredDownloads = [...allDownloads];
+                }
+                currentPage = 1;
+                displayDocuments(filteredDownloads);
+                updatePagination();
+            }
+        }
+
+        // Get category name
+        function getCategoryName(categoryId) {
+            const categoryMap = {
+                'reports': 'Reports',
+                'advertisements': 'Advertisements',
+                'journals': 'Journals',
+                'brochures': 'Brochures',
+                'flyers': 'Flyers',
+                'magazines': 'Magazines',
+                'policy-papers': 'Policy Papers',
+                'research-papers': 'Research Papers'
+            };
+            return categoryMap[categoryId] || categoryId;
+        }
+
+        // Get file type CSS class
+        function getFileTypeClass(fileType) {
+            const type = fileType.toLowerCase();
+            if (type === 'pdf') return 'badge-pdf';
+            if (type === 'doc' || type === 'docx') return 'badge-doc';
+            if (type === 'xls' || type === 'xlsx') return 'badge-xls';
+            if (type === 'ppt' || type === 'pptx') return 'badge-ppt';
+            return 'badge-other';
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        // Update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredDownloads.length / itemsPerPage);
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // Previous button
+            paginationHTML += `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="goToPage(${currentPage - 1})">Previous</a>
+                </li>
+            `;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    paginationHTML += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>
+                        </li>
+                    `;
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    paginationHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+            
+            // Next button
+            paginationHTML += `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="goToPage(${currentPage + 1})">Next</a>
+                </li>
+            `;
+            
+            pagination.innerHTML = paginationHTML;
+        }
+
+        // Go to specific page
+        function goToPage(page) {
+            if (page < 1 || page > Math.ceil(filteredDownloads.length / itemsPerPage)) return;
+            currentPage = page;
+            displayDocuments(filteredDownloads);
+            updatePagination();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', filterDownloads);
+            }
+            
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', updateCategoryFilter);
+            }
+        }
+
+        // Filter downloads
+        function filterDownloads() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            
+            filteredDownloads = allDownloads.filter(item => {
+                const matchesSearch = item.title.toLowerCase().includes(searchTerm) || 
+                                    item.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = !selectedCategory || item.category === selectedCategory;
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            currentPage = 1;
+            displayDocuments(filteredDownloads);
+            updatePagination();
+        }
+
+        // Hide loading state
+        function hideLoadingState() {
+            const loadingState = document.getElementById('loadingState');
+            if (loadingState) {
+                loadingState.style.display = 'none';
+            }
+        }
+
+        // Show empty state
+        function showEmptyState() {
+            const loadingState = document.getElementById('loadingState');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (loadingState) loadingState.style.display = 'none';
+            if (emptyState) emptyState.style.display = 'block';
+        }
+
+        // Download file function
+        function downloadFile(fileUrl, fileName, fileType) {
+            // Check if it's a Google Drive link
+            if (fileUrl.includes('drive.google.com')) {
+                // For Google Drive links, open in new tab
+                window.open(fileUrl, '_blank');
+            } else {
+                // For other URLs, try to download
+                const link = document.createElement('a');
+                link.href = fileUrl;
+                link.download = `${fileName}.${fileType.toLowerCase()}`;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+        
+        // Visitor Counter Function
+        function updateVisitorCount() {
+            // Get current count from localStorage
+            let count = localStorage.getItem('visitorCount');
+            
+            if (count === null) {
+                // First time visit, start from 3594
+                count = 3594;
+            } else {
+                // Increment existing count
+                count = parseInt(count) + 1;
+            }
+            
+            // Store updated count
+            localStorage.setItem('visitorCount', count);
+            
+            // Display count
+            const counterElement = document.getElementById('visitorCount');
+            if (counterElement) {
+                counterElement.textContent = count;
+            }
+        }
+        
+        // Initialize visitor counter
+        updateVisitorCount();
+    </script>
+</body>
+</html>

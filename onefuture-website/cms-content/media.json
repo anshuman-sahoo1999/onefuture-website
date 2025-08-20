@@ -1,0 +1,26 @@
+{
+  "categories": [
+    {
+      "id": "documents",
+      "name": "Documents",
+      "description": "Reports, publications, brochures, and policy papers",
+      "color": "primary",
+      "type": "document"
+    },
+    {
+      "id": "images",
+      "name": "Images",
+      "description": "Project photos, infographics, and visual content",
+      "color": "secondary",
+      "type": "media"
+    },
+    {
+      "id": "videos",
+      "name": "Videos",
+      "description": "Educational videos, project documentaries, and presentations",
+      "color": "warning",
+      "type": "media"
+    }
+  ],
+  "items": []
+}

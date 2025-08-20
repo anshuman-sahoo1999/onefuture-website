@@ -1,0 +1,212 @@
+{
+  "home": {
+    "title": "Welcome to One Future Foundation - Sustainable Development for All: Leading Think Tank from Odisha",
+    "metaDescription": "Empowering communities through innovative approaches in climate action, clean energy, and sustainable development for a brighter tomorrow.",
+    "sections": {
+      "hero-title": {
+        "type": "html",
+        "content": "Welcome to<br><span>One Future Foundation</span>"
+      },
+      "hero-subtitle": {
+        "type": "text",
+        "content": "Inspiring Lives, Transforming Futures"
+      },
+      "hero-description": {
+        "type": "text",
+        "content": "Empowering communities through innovative approaches in climate action, clean energy, and sustainable development for a brighter tomorrow."
+      },
+      "about-title": {
+        "type": "text",
+        "content": "About Us"
+      },
+      "about-description-1": {
+        "type": "text",
+        "content": "One Future Foundation is a not-for-profit organization, dedicated to fostering sustainable development and improving the quality of life for communities across geographies."
+      },
+      "about-description-2": {
+        "type": "text",
+        "content": "With a holistic approach, we address critical development challenges and empower individuals to become agents of change, building a brighter future for all."
+      },
+      "vision-mission-title": {
+        "type": "text",
+        "content": "Vision & Mission"
+      },
+      "vision-mission-subtitle": {
+        "type": "text",
+        "content": "Our guiding principles for creating a better future"
+      },
+      "vision-title": {
+        "type": "text",
+        "content": "Our Vision"
+      },
+      "vision-description": {
+        "type": "text",
+        "content": "To be a leading organisation in promoting sustainable development solutions and empowering communities"
+      },
+      "mission-title": {
+        "type": "text",
+        "content": "Our Mission"
+      },
+      "mission-description": {
+        "type": "text",
+        "content": "To empower communities by promoting sustainable agriculture, clean water and sanitation, renewable energy, and climate-resilient livelihoods, through innovation, capacity building, and inclusive partnerships."
+      },
+      "sustainability-title": {
+        "type": "text",
+        "content": "Driving Sustainability Together"
+      },
+      "sustainability-subtitle": {
+        "type": "text",
+        "content": "Collaborative approach to sustainable development"
+      },
+      "approach-title": {
+        "type": "text",
+        "content": "Our Approach"
+      },
+      "approach-subtitle": {
+        "type": "text",
+        "content": "Strategic framework for creating lasting impact"
+      },
+      "impact-title": {
+        "type": "text",
+        "content": "Core Impact Areas"
+      },
+      "impact-subtitle": {
+        "type": "text",
+        "content": "Our focus areas for creating sustainable change"
+      },
+      "blueprint-title": {
+        "type": "text",
+        "content": "Our Strategic Blueprint"
+      },
+      "blueprint-subtitle": {
+        "type": "text",
+        "content": "Explore our comprehensive strategic approach through our key focus areas"
+      },
+      "involved-title": {
+        "type": "text",
+        "content": "Get Involved"
+      },
+      "involved-subtitle": {
+        "type": "text",
+        "content": "Join us in building a sustainable and prosperous future for all."
+      }
+    }
+  },
+  "careers": {
+    "title": "Careers - One Future Foundation",
+    "metaDescription": "Join our team and make a difference in sustainable development and community empowerment.",
+    "sections": {
+      "page-title": {
+        "type": "text",
+        "content": "Join Our Team"
+      },
+      "page-subtitle": {
+        "type": "text",
+        "content": "Make a difference in sustainable development and community empowerment"
+      }
+    }
+  },
+  "downloads": {
+    "title": "Downloads - One Future Foundation",
+    "metaDescription": "Access our latest reports, publications, and resources to learn more about our work and impact.",
+    "sections": {
+      "page-title": {
+        "type": "text",
+        "content": "Downloads"
+      },
+      "page-subtitle": {
+        "type": "text",
+        "content": "Access our latest reports, publications, and resources to learn more about our work and impact."
+      }
+    }
+  },
+  "blog": {
+    "title": "Blog - One Future Foundation",
+    "metaDescription": "Insights, stories, and updates from our work in sustainable development and community empowerment.",
+    "sections": {
+      "page-title": {
+        "type": "text",
+        "content": "Our Blog"
+      },
+      "page-subtitle": {
+        "type": "text",
+        "content": "Insights, stories, and updates from our work in sustainable development"
+      }
+    }
+  },
+  "partners": {
+    "title": "Partners - One Future Foundation",
+    "metaDescription": "Learn about our partnerships and how we collaborate for sustainable development.",
+    "sections": {
+      "page-title": {
+        "type": "text",
+        "content": "Our Partners"
+      },
+      "page-subtitle": {
+        "type": "text",
+        "content": "Collaborating for sustainable development and community empowerment"
+      }
+    }
+  },
+  "volunteer": {
+    "title": "Volunteer - One Future Foundation",
+    "metaDescription": "Join our volunteer program and contribute to sustainable development and community empowerment initiatives.",
+    "sections": {
+      "page-title": {
+        "type": "text",
+        "content": "Volunteer With Us"
+      },
+      "page-subtitle": {
+        "type": "text",
+        "content": "Make a difference by contributing your time and skills to our sustainable development initiatives"
+      },
+      "hero-description": {
+        "type": "text",
+        "content": "Join our community of dedicated volunteers who are making a real impact in sustainable development and community empowerment across Odisha and beyond."
+      },
+      "why-volunteer-title": {
+        "type": "text",
+        "content": "Why Volunteer With Us?"
+      },
+      "why-volunteer-subtitle": {
+        "type": "text",
+        "content": "Discover the benefits of joining our volunteer program"
+      },
+      "volunteer-areas-title": {
+        "type": "text",
+        "content": "Volunteer Opportunities"
+      },
+      "volunteer-areas-subtitle": {
+        "type": "text",
+        "content": "Explore different ways you can contribute to our mission"
+      },
+      "how-to-apply-title": {
+        "type": "text",
+        "content": "How to Apply"
+      },
+      "how-to-apply-subtitle": {
+        "type": "text",
+        "content": "Simple steps to start your volunteering journey"
+      }
+    }
+  },
+  "gallery": {
+    "title": "Gallery - One Future Foundation",
+    "metaDescription": "Explore our photo gallery showcasing our projects, events, and impact across communities.",
+    "sections": {
+      "page-title": {
+        "type": "text",
+        "content": "Our Gallery"
+      },
+      "page-subtitle": {
+        "type": "text",
+        "content": "Visual stories of our impact and community transformation"
+      },
+      "gallery-description": {
+        "type": "text",
+        "content": "Browse through our collection of photos and videos that capture the real impact of our work in sustainable development and community empowerment."
+      }
+    }
+  }
+}

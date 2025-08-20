@@ -1,0 +1,30 @@
+{
+  "categories": [
+    {
+      "id": "full-time",
+      "name": "Full Time",
+      "description": "Full-time employment opportunities"
+    },
+    {
+      "id": "part-time",
+      "name": "Part Time",
+      "description": "Part-time and flexible work opportunities"
+    },
+    {
+      "id": "contract",
+      "name": "Contract",
+      "description": "Contract-based project work"
+    },
+    {
+      "id": "internship",
+      "name": "Internship",
+      "description": "Internship and learning opportunities"
+    },
+    {
+      "id": "volunteer",
+      "name": "Volunteer",
+      "description": "Volunteer positions and community service"
+    }
+  ],
+  "jobs": []
+}
